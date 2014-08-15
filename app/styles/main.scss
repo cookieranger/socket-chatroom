@@ -1,0 +1,79 @@
+div.welcome{
+
+}
+
+div.header-welcome{
+  color: white;
+}
+div.logwrapper{
+
+}
+
+.table{
+  height: 400px;
+  background: white;
+  color: black;
+  overflow: scroll;
+  margin-top: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  list-style: none;
+}
+
+ul.chatlog{
+  @extend .table;
+  li{
+    &.connection{
+      color: blue;
+    }
+    &.disconnection{
+      color: red;
+    }
+    p{
+      margin-bottom: 3px;
+      font-size: 15px;
+    }
+    hr{
+      background: black;
+      height: 1px;
+      margin: 2px;
+      
+    }
+  }
+}
+ul.members{
+  @extend .table;
+}
+
+.inline{
+  display: inline-block;
+}
+.block{
+  display: block;
+}
+.gray{
+  color: #888;
+}
+
+.vert-top{
+  vertical-align: top;
+}
+.fake-btn{
+  border: none;
+}
+
+.navbar-brand{
+  color: #eee !important;
+}
+
+.popover {
+  background: white;
+  border: 3px solid black;
+  margin-left: -50px;
+  font-size: 19px;
+  font-weight: 800;
+  &.bottom .arrow:after {
+    border-bottom-color: white;
+  }
+}

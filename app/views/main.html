@@ -1,0 +1,114 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" type="button">
+        <span class="sr-only">Toggle Navigation</span>
+        <span ng-repeat="a in [1,2,3]" class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{appName}}</a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <form class="navbar-form navbar-right" role="form" ng-submit="login();" ng-hide="logined">
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="Email" ng-model="loginUsername">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="password" placeholder="Password" ng-model="loginPassword">
+        </div>
+        <button class="btn btn-success" type="submit">Sign In</button>
+        <button class="btn btn-warning" ng-click="guestLogin();" onclick="return false;">Guest</button>
+        
+
+        <div class="inline">
+
+          <button class="btn-danger btn btn-lg" ng-click="logined = true; username = 'ghosthunter_111'; ghostWhisper();" onclick="return false;">Test</button>
+          
+          <div class="popover bottom" style="display: block; left: initial; top: initial">
+            <div class="arrow"></div>
+            <div class="popover-content">
+              <p>Click here for Demo!</p>
+            </div>
+          </div>
+
+        </div>
+        
+        
+      </form>
+
+      <div ng-show="logined" class="header-welcome navbar-right">
+        <h5 class="inline">Welcome, {{username}}!</h5>
+        <button class="btn-warning btn" ng-click="ghostWhisper();">Incoming</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div>
+</div>
+
+
+<!-- <div class="welcome" ng-show="logined && !loginConfirmed">
+  <div class="jumbotron">
+    <div class="container">
+      <h3>Welcome, {{username}}! Please Chat</h3>
+      <button class="btn btn-primary btn-lg" role="button" ng-click="loginConfirmed = true">Ok</button>
+    </div>
+  </div>
+</div>
+ -->
+<!-- <div ng-init="loginConfirmed = true; sendMessage(); username = 'kwik';"></div> -->
+
+<div ng-show="logined && !loginConfirmed">
+  <div class="jumbotron">
+    <div class="container">
+      <h3>User Name: 
+        <span class="gray">{{username}}</span>
+        <button class="btn" ng-class="{'btn-primary': !display.time}" ng-click="display.time = !display.time">Display Time</button>
+      </h3>
+
+      <div class="row inline">
+        <div class="col-xs-3 col-sm-2 col-md-1">
+          <button class="block btn btn-sm fake-btn vert-top">Enter: </button>
+          <p> </p>      
+          <a class="btn-primary btn btn-md" ng-click="sendMessage();">Send</a>
+        </div>
+       
+        <textarea class="col-xs-9 col-sm-10 col-md-11" ng-model="chatContent" rows="3" cols="200" 
+        placeholder="Share something!" maxlength="300" ng-keyup="checkSend($event);"/>
+        </textarea>
+
+      </div>
+      
+      
+      
+      <div class="logwrapper row">
+        <ul class="chatlog col-xs-12 col-sm-9">
+          <li ng-repeat="msg in thread" ng-class="msg.type">
+            <p>
+              <b>{{msg.user}}</b>
+              <b ng-show="display.time">{{msg.time | date : 'mediumTime'}}</b>
+              : {{msg.content}}</p>
+            <hr>
+          </li>
+        </ul>
+
+        <div class="col-xs-12 col-sm-3">
+          <div class="row">
+            <ul class="members col-xs-11 col-xs-offset-1">
+              <li ng-repeat="member in participants">
+                {{member.user}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
